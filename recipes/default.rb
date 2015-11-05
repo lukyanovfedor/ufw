@@ -44,6 +44,7 @@ else
   firewall_rule 'ssh' do
     port 22
     action :create
+    firewall_name "ufw"
   end
 
   node['firewall']['rules'].each do |rule_mash|
@@ -83,6 +84,7 @@ else
         dest_port params['dest_port'].to_i if params['dest_port']
         position params['position'].to_i if params['position']
         action act
+        firewall_name "ufw"
       end
     end
   end
